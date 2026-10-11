@@ -5,23 +5,9 @@ import './globals.css'
 export const metadata: Metadata = {
   title: 'NSUT Connect — Student community',
   description: 'The student network for NSUT discussions, announcements, and timetables.',
-  generator: 'v0.app',
   icons: {
-    icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: '/apple-icon.png',
+    icon: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-67WjXDKHFHNe0i7JPmqzs2l2y0PBbG.png',
+    apple: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-67WjXDKHFHNe0i7JPmqzs2l2y0PBbG.png',
   },
 }
 
