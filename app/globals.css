@@ -44,4 +44,70 @@
   .discussion-row { @apply flex items-center gap-4 border-b border-white/[0.07] px-5 py-4 transition-colors last:border-b-0 hover:bg-white/[0.025]; }
   .field-label { @apply flex flex-col gap-2 text-xs font-medium text-white/55; }
   .field-input { @apply h-11 rounded-lg border border-white/10 bg-white/[0.04] px-3 text-sm text-white outline-none transition-colors placeholder:text-white/20 focus:border-cyan-300/60 focus:bg-white/[0.06]; }
+  .feed-card { animation: feed-rise 560ms cubic-bezier(.22,1,.36,1) both; animation-delay: var(--feed-delay, 0ms); transition: border-color 220ms ease, transform 220ms ease, box-shadow 220ms ease; }
+  .feed-card:hover { transform: translateY(-3px); border-color: rgba(165,243,252,.22); box-shadow: 0 22px 70px rgba(0,0,0,.34), 0 0 0 1px rgba(165,243,252,.04); }
+  .quick-tile { @apply rounded-xl border border-white/[0.07] bg-white/[0.018] px-4 py-3 transition-all duration-300 hover:-translate-y-0.5 hover:border-lime-300/30 hover:bg-lime-300/[0.04]; }
+  .feed-signal { animation: signal-in 700ms cubic-bezier(.22,1,.36,1) both; }
+  .signal-dot { animation: signal-pulse 2.2s ease-in-out infinite; box-shadow: 0 0 0 0 rgba(190,242,100,.45); }
+  .feed-card button { transition: color 180ms ease, transform 180ms ease; }
+  .feed-card button:active { transform: scale(.94); }
+  .feed-card button[aria-pressed="true"] svg { animation: like-pop 360ms cubic-bezier(.22,1.4,.36,1); }
+  .reply-panel { animation: reply-open 220ms ease-out both; }
+  .hero-sketch { position: relative; width: 112px; height: 82px; margin: 0 22px 2px auto; opacity: .82; filter: drop-shadow(0 0 18px rgba(165,243,252,.08)); }
+  .sketch-sun { position: absolute; left: 35px; top: 22px; width: 42px; height: 42px; border: 1px solid rgba(165,243,252,.62); border-radius: 50%; animation: sketch-breathe 4s ease-in-out infinite; }
+  .sketch-sun::before, .sketch-sun::after { content: ''; position: absolute; inset: 7px; border: 1px dashed rgba(190,242,100,.42); border-radius: 45% 55% 52% 48%; transform: rotate(35deg); }
+  .sketch-sun::after { transform: rotate(-35deg); border-color: rgba(167,139,250,.4); }
+  .sketch-orbit { position: absolute; left: 14px; top: 30px; width: 84px; height: 26px; border: 1px solid rgba(255,255,255,.22); border-radius: 50%; transform: rotate(-22deg); }
+  .sketch-orbit-two { transform: rotate(28deg); border-color: rgba(165,243,252,.28); }
+  .sketch-orbit::after { content: ''; position: absolute; left: 8px; top: 2px; width: 4px; height: 4px; border-radius: 50%; background: #bef264; animation: sketch-travel 3.8s linear infinite; }
+  .sketch-orbit-two::after { left: auto; top: auto; right: 11px; bottom: 1px; background: #a5f3fc; animation-delay: -1.8s; }
+  .sketch-star { position: absolute; color: rgba(255,255,255,.58); font-family: Georgia, serif; animation: sketch-twinkle 2.8s ease-in-out infinite; }
+  .sketch-star-one { top: 8px; right: 8px; font-size: 18px; color: #bef264; }
+  .sketch-star-two { bottom: 7px; left: 4px; font-size: 26px; animation-delay: -1.2s; }
+}
+
+@keyframes sketch-breathe {
+  0%, 100% { transform: scale(.96); opacity: .7; }
+  50% { transform: scale(1.06); opacity: 1; }
+}
+
+@keyframes sketch-travel {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(63px, 10px); }
+  100% { transform: translate(0, 0); }
+}
+
+@keyframes sketch-twinkle {
+  0%, 100% { opacity: .25; transform: scale(.8) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1.15) rotate(15deg); }
+}
+
+@keyframes signal-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes signal-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(190,242,100,.42); }
+  50% { box-shadow: 0 0 0 5px rgba(190,242,100,0); }
+}
+
+@keyframes feed-rise {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes like-pop {
+  0% { transform: scale(.7) rotate(-10deg); }
+  55% { transform: scale(1.25) rotate(4deg); }
+  100% { transform: scale(1) rotate(0); }
+}
+
+@keyframes reply-open {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
 }
